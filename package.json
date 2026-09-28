@@ -1,0 +1,46 @@
+{
+  "name": "creavores-aeo-mcp",
+  "version": "1.0.2",
+  "mcpName": "io.github.tresor4k/creavores-aeo-mcp",
+  "description": "MCP server for AEO/AI-search audits: direct-answer detection, JSON-LD validation, llms.txt compliance, E-E-A-T signals, agentic-browsing readiness, and AI citation simulation for any URL.",
+  "homepage": "https://lescreavores.fr",
+  "type": "module",
+  "main": "src/server.js",
+  "bin": {
+    "creavores-aeo-mcp": "bin/creavores-aeo-mcp.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "aeo",
+    "geo",
+    "seo",
+    "ai-search",
+    "answer-engine-optimization",
+    "generative-engine-optimization",
+    "llms-txt",
+    "json-ld",
+    "structured-data",
+    "eeat",
+    "agentic-browsing",
+    "ai-citation",
+    "claude",
+    "chatgpt",
+    "perplexity"
+  ],
+  "author": "Les Créavores <contact@lescreavores.fr>",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "cheerio": "^1.2.0"
+  }
+}
