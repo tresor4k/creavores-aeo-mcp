@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Publie creavores-aeo-mcp 1.0.2 sur npm puis l'inscrit au registre MCP officiel.
+# Publie creavores-aeo-mcp 1.0.3 sur npm puis l'inscrit au registre MCP officiel.
 # Préalable : `npm login` (compte macalc) dans ce terminal. Lancer : bash publish-registry.sh
 set -euo pipefail
 cd "$(dirname "$0")"

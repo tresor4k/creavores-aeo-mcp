@@ -3,13 +3,17 @@
   "name": "io.github.tresor4k/creavores-aeo-mcp",
   "title": "Créavores AEO Audit",
   "description": "AEO / AI-search audit of any URL: direct answers, JSON-LD, llms.txt, E-E-A-T, AI citations.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "websiteUrl": "https://lescreavores.fr",
+  "repository": {
+    "url": "https://github.com/tresor4k/creavores-aeo-mcp",
+    "source": "github"
+  },
   "packages": [
     {
       "registryType": "npm",
       "identifier": "creavores-aeo-mcp",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "transport": {
         "type": "stdio"
       }

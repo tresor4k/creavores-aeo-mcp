@@ -1,9 +1,16 @@
 {
   "name": "creavores-aeo-mcp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "mcpName": "io.github.tresor4k/creavores-aeo-mcp",
   "description": "MCP server for AEO/AI-search audits: direct-answer detection, JSON-LD validation, llms.txt compliance, E-E-A-T signals, agentic-browsing readiness, and AI citation simulation for any URL.",
   "homepage": "https://lescreavores.fr",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tresor4k/creavores-aeo-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tresor4k/creavores-aeo-mcp/issues"
+  },
   "type": "module",
   "main": "src/server.js",
   "bin": {

@@ -7,7 +7,7 @@ const toolsByName = new Map(tools.map((t) => [t.name, t]));
 
 export function createServer() {
   const server = new Server(
-    { name: "creavores-aeo-mcp", version: "1.0.2" },
+    { name: "creavores-aeo-mcp", version: "1.0.3" },
     { capabilities: { tools: {} } }
   );
 

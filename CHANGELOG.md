@@ -1,4 +1,10 @@
 
+## 1.0.3 — 2026-09-28
+
+### Added
+- Public source repository: https://github.com/tresor4k/creavores-aeo-mcp (`repository` in
+  `package.json` and `server.json`).
+
 ## 1.0.2 — 2026-09-20
 
 ### Added
