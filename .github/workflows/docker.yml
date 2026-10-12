@@ -56,7 +56,7 @@ jobs:
             (map(select(.id == 1))[0].result.serverInfo.name == "creavores-aeo-mcp")
             and (map(select(.id == 1))[0].result.serverInfo.version == $v)
             and ((map(select(.id == 2))[0].result.tools | map(.name) | sort)
-                 == (["audit_aeo","check_agentic_readiness","check_direct_answer","check_eeat_signals","check_llms_txt","compare_aeo","extract_structured_data","simulate_ai_citation"]))
+                 == (["audit_aeo","check_agentic_readiness","check_direct_answer","check_eeat_signals","check_llms_txt","compare_aeo","extract_structured_data","get_marches_publics","get_marronniers","get_prix_site","simulate_ai_citation"]))
           ' out.jsonl
 
       - uses: docker/login-action@v3
@@ -75,7 +75,7 @@ jobs:
             ${{ env.IMAGE }}:latest
           labels: |
             org.opencontainers.image.title=creavores-aeo-mcp
-            org.opencontainers.image.description=MCP server (stdio) for AEO / AI-search audits of any URL: 8 tools, free, no API key.
+            org.opencontainers.image.description=MCP server (stdio) for AEO / AI-search audits of any URL plus French open data (website prices, public tenders, editorial calendar): 11 tools, free, no API key.
             org.opencontainers.image.url=https://lescreavores.fr/outils/audit-aeo-gratuit/
             org.opencontainers.image.source=https://github.com/tresor4k/creavores-aeo-mcp
             org.opencontainers.image.version=${{ steps.v.outputs.version }}

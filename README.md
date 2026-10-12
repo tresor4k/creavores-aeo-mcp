@@ -116,6 +116,32 @@ Compares 2-3 URLs' AEO scores side by side — use it to benchmark yourself agai
 { "urls": ["https://example.com", "https://competitor.com"] }
 ```
 
+### 9. `get_prix_site`
+
+Live French website prices from our open dataset (prices publicly displayed by agencies and freelancers): one cell per `type|unit` with `n`, distinct providers and p10 to p90 in euros. Optional `type` and `unit` filters; only publishable cells by default. Read live from [reference-prix.json](https://lescreavores.fr/data/observatoire-achat-site-internet/reference-prix.json).
+
+```json
+{ "type": "vitrine", "unit": "forfait" }
+```
+
+### 10. `get_marches_publics`
+
+Live aggregates of French public procurement for websites (DECP, BOAMP): amounts excl. VAT (n, q1, median, q3) per category and buyer type, bids received, yearly breakdown. Optional `buyer_type` filter. Read live from `reference-prix.json` and [stats.json](https://lescreavores.fr/data/observatoire-achat-site-internet/stats.json).
+
+```json
+{ "buyer_type": "commune" }
+```
+
+### 11. `get_marronniers`
+
+Live French editorial calendar dates (Sept 2026 to Dec 2027): world days, holidays, retail events, with sectors, source and a content angle. Optional `from` / `to` (YYYY-MM-DD), `sector` and `limit`. Read live from [marronniers-2026-2027.json](https://lescreavores.fr/data/marronniers-2026-2027.json).
+
+```json
+{ "from": "2026-12-01", "to": "2026-12-31", "sector": "commerce", "limit": 10 }
+```
+
+Every data answer carries `source` (file URL), `licence` and `generated_at` as read in the file, and a `citation` with the page to link: [Observatoire de l'achat de sites internet](https://lescreavores.fr/observatoire-achat-site-internet/) or [Calendrier des marronniers 2026-2027](https://lescreavores.fr/outils/generateur-calendrier-editorial/). If a file is unreachable, the tool returns `{ "error": "..." }`.
+
 ## About
 
 Made by [Les Créavores](https://lescreavores.fr), a French web & SEO/AEO agency (Metz, France & Luxembourg). We build the tools we use ourselves — see the free [AEO audit tool](https://lescreavores.fr/outils/audit-aeo-gratuit/) (same scoring engine, browser version) and the [website pricing barometer](https://lescreavores.fr/prix-creation-site-internet/) (open dataset, CC-BY).
@@ -172,7 +198,7 @@ Ou ajoutez-le dans le fichier `.mcp.json` à la racine de votre projet :
 
 Aucune clé API, aucune configuration ni variable d'environnement requise. Le serveur récupère les pages directement avec un User-Agent identifiable (`creavores-aeo-mcp/1.0 (+https://lescreavores.fr)`), un délai d'attente de 15 secondes, et ne lève jamais d'exception non gérée : chaque outil renvoie un JSON propre (y compris `{ "error": "..." }` en cas d'échec), ce qui le rend sûr à appeler depuis n'importe quelle boucle d'agent.
 
-## Les 8 outils
+## Les 11 outils
 
 ### 1. `audit_aeo`
 
@@ -237,6 +263,32 @@ Compare les scores AEO de 2 à 3 URL côte à côte — utile pour se comparer d
 ```json
 { "urls": ["https://exemple.fr", "https://concurrent.fr"] }
 ```
+
+### 9. `get_prix_site`
+
+Prix de création de site affichés par les agences et indépendants, lus en direct dans notre jeu de données ouvert : une cellule par `type|unité` avec `n`, le nombre de prestataires distincts et les quantiles p10 à p90 en euros. Filtres facultatifs `type` et `unit` ; seules les cellules publiables sont renvoyées par défaut.
+
+```json
+{ "type": "vitrine", "unit": "forfait" }
+```
+
+### 10. `get_marches_publics`
+
+Agrégats des marchés publics de sites internet (DECP, BOAMP), lus en direct : montants HT (n, q1, médiane, q3) par catégorie et type d'acheteur, offres reçues, répartition par année. Filtre facultatif `buyer_type`.
+
+```json
+{ "buyer_type": "commune" }
+```
+
+### 11. `get_marronniers`
+
+Marronniers de septembre 2026 à décembre 2027, lus en direct : journées mondiales, fêtes, temps forts commerciaux, avec secteurs, source et angle éditorial. Filtres facultatifs `from` / `to` (AAAA-MM-JJ), `sector` et `limit`.
+
+```json
+{ "from": "2026-12-01", "to": "2026-12-31", "sector": "commerce", "limit": 10 }
+```
+
+Chaque réponse de données porte `source` (URL du fichier), `licence` et `generated_at` lus dans le fichier, et une `citation` avec la page à citer : [Observatoire de l'achat de sites internet](https://lescreavores.fr/observatoire-achat-site-internet/) ou [Calendrier des marronniers 2026-2027](https://lescreavores.fr/outils/generateur-calendrier-editorial/). Si un fichier est injoignable, l'outil renvoie `{ "error": "..." }`.
 
 ## À propos
 

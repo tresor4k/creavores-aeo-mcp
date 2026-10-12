@@ -6,6 +6,9 @@ import { checkEeatSignalsTool } from "./check_eeat_signals.js";
 import { checkAgenticReadinessTool } from "./check_agentic_readiness.js";
 import { simulateAiCitationTool } from "./simulate_ai_citation.js";
 import { compareAeoTool } from "./compare_aeo.js";
+import { getPrixSiteTool } from "./get_prix_site.js";
+import { getMarchesPublicsTool } from "./get_marches_publics.js";
+import { getMarronniersTool } from "./get_marronniers.js";
 
 export const tools = [
   auditAeoTool,
@@ -16,4 +19,7 @@ export const tools = [
   checkAgenticReadinessTool,
   simulateAiCitationTool,
   compareAeoTool,
+  getPrixSiteTool,
+  getMarchesPublicsTool,
+  getMarronniersTool,
 ];

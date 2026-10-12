@@ -1,8 +1,8 @@
 {
   "name": "creavores-aeo-mcp",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "mcpName": "io.github.tresor4k/creavores-aeo-mcp",
-  "description": "MCP server for AEO/AI-search audits: direct-answer detection, JSON-LD validation, llms.txt compliance, E-E-A-T signals, agentic-browsing readiness, and AI citation simulation for any URL.",
+  "description": "MCP server for AEO/AI-search audits of any URL (direct answer, JSON-LD, llms.txt, E-E-A-T, agentic readiness, AI citation) plus live French open data: website prices, public tenders, editorial calendar.",
   "homepage": "https://lescreavores.fr",
   "repository": {
     "type": "git",
@@ -38,6 +38,11 @@
     "json-ld",
     "structured-data",
     "eeat",
+    "open-data",
+    "france",
+    "website-prices",
+    "public-procurement",
+    "editorial-calendar",
     "agentic-browsing",
     "ai-citation",
     "claude",

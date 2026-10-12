@@ -1,4 +1,16 @@
 
+## 1.1.0 — 2026-10-12
+
+### Added
+- Three data tools reading the Les Créavores open-data files live (no data bundled in the package):
+  - `get_prix_site`: displayed website prices per `type|unit` (`reference-prix.json`), filters `type`, `unit`.
+  - `get_marches_publics`: French public procurement aggregates (DECP, BOAMP) from `reference-prix.json`
+    and `stats.json`, filter `buyer_type`.
+  - `get_marronniers`: editorial calendar dates 2026-2027 (`marronniers-2026-2027.json`), filters
+    `from`, `to`, `sector`, `limit`.
+- Each data answer carries `source`, `licence`, `generated_at` and `citation`; an unreachable file
+  returns `{ "error": "..." }`.
+
 ## 1.0.3 — 2026-09-28
 
 ### Added

@@ -90,13 +90,16 @@ async function main() {
     "check_agentic_readiness",
     "simulate_ai_citation",
     "compare_aeo",
+    "get_prix_site",
+    "get_marches_publics",
+    "get_marronniers",
   ];
   const missing = expected.filter((n) => !listedNames.includes(n));
-  if (missing.length) {
-    console.error("FAIL: missing tools:", missing);
+  if (missing.length || listedNames.length !== expected.length) {
+    console.error("FAIL: missing tools:", missing, "listed:", listedNames.length);
     failures++;
   } else {
-    console.log("PASS: all 8 expected tools are listed.");
+    console.log(`PASS: all ${expected.length} expected tools are listed.`);
   }
 
   // 3. tools/call audit_aeo on https://lescreavores.fr/
@@ -145,6 +148,28 @@ async function main() {
       console.error("WARN: check_llms_txt returned an error payload:", parsed.error);
     } else {
       console.log(`PASS: check_llms_txt returned exists=${parsed.exists}, score=${parsed.score}`);
+    }
+  }
+
+  // 5-7. data tools, called against the live open-data files on lescreavores.fr
+  const dataCalls = [
+    ["get_prix_site", { type: "vitrine", unit: "forfait" }, (p) => p.cells && Object.keys(p.cells).length > 0],
+    ["get_marches_publics", { buyer_type: "commune" }, (p) => Object.keys(p.amounts_excl_vat_by_category_and_buyer || {}).length > 0],
+    ["get_marronniers", { from: "2026-12-01", to: "2026-12-31", sector: "commerce", limit: 5 }, (p) => Array.isArray(p.events) && p.events.length > 0],
+  ];
+  let id = 5;
+  for (const [name, args, ok] of dataCalls) {
+    send(child, { jsonrpc: "2.0", id: id++, method: "tools/call", params: { name, arguments: args } });
+    const resp = await reader.next(30000);
+    const text = resp.result?.content?.[0]?.text;
+    console.log(`\n=== tools/call ${name}(${JSON.stringify(args)}) ===`);
+    console.log(text && text.slice(0, 600));
+    const parsed = text ? JSON.parse(text) : null;
+    if (!parsed || parsed.error || !parsed.source || !("licence" in parsed) || !parsed.citation?.url || !ok(parsed)) {
+      console.error(`FAIL: ${name} returned`, parsed && parsed.error ? parsed.error : "an unexpected payload");
+      failures++;
+    } else {
+      console.log(`PASS: ${name}`);
     }
   }
 

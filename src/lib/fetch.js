@@ -62,3 +62,18 @@ export function originOf(url) {
 }
 
 export { USER_AGENT, DEFAULT_TIMEOUT_MS };
+
+/**
+ * Fetches and parses a JSON file. Never throws: resolves to {ok:true, data, headers}
+ * or {ok:false, error} (unreachable, non-2xx or invalid JSON).
+ */
+export async function fetchJson(url, options = {}) {
+  const res = await fetchText(url, { ...options, headers: { Accept: "application/json", ...(options.headers || {}) } });
+  if (res.error) return { ok: false, error: res.error };
+  if (!res.ok) return { ok: false, error: `HTTP ${res.status} ${res.statusText || ""} fetching ${url}`.trim() };
+  try {
+    return { ok: true, data: JSON.parse(res.text), headers: res.headers };
+  } catch {
+    return { ok: false, error: `Invalid JSON at ${url}` };
+  }
+}
