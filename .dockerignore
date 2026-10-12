@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log*
+*.tgz
+.git
+.github
+.DS_Store
+test
+docker
+publish-registry.sh
